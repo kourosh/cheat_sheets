@@ -71,7 +71,7 @@ This creates an array that displays all the fields for a particular team having 
 
 
 ## new
-This method tells Rails to create a new object. We use this when we ask users, in a form, to create a new entity. In the football app example, we used this:
+This method displays the form needed to create a new record. It doesn't actually create the record, though. The create method below handles the creation. In the football app example, we used this:
 ```
 def new
 	@team = Team.new
@@ -88,7 +88,7 @@ And in the views file we used:
 
 
 ## create
-Once we take data from HTML forms, we need to **create** a record with them in the database. This is what the create method does. In the controller:
+This is tied to the new method above. Once we get the data from the view containing the data, create creates the database record. In the controller:
 ```
 Team.create(team_params)
 ```
@@ -98,3 +98,10 @@ params.require(:team).permit(:name, :country)
 ```
 
 ## edit
+This method displays the form needed to edit an existing record. It pulls data out of the database and populates a form. It does not change the record in the database.
+
+## update
+This method updates a database record once receieved from the form. It usually works in tandem with the edit method above
+
+## delete
+This deletes a record in the database. CAREFUL!
